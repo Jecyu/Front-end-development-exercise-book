@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>利用二叉树实现射击小游戏</title>
+</head>
+<link rel="stylesheet" href="">
+<style type="text/css">
+    .main {
+        width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+
+        background: #c0c0c0;
+    }
+
+    /* 界面元素使用绝对定位与相对定位 */
+    #stage {
+        position: relative;
+        width: 300px;
+        height: 300px;
+    }
+
+    #background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300px;
+        height: 300px;
+
+        background: #c0c0c0 url(./images/background.png);
+        background-size: contain;
+        /*border: 2px dotted #ec971f;*/
+        /*border-radius: 50%;*/
+    }
+
+    /* 地球 */
+    #platform {
+        position: absolute;
+        left: 0;
+        bottom: -25px;
+        width: 300px;
+        height: 50px;
+        border: 2px dotted #ec971f;
+        border-radius: 50%;
+    }
+
+    #aeroplane {
+        position: absolute;
+        top: 270px;
+        left: 140px;
+        width: 20px;
+        height: 20px;
+
+        background: url(./images/aeroplane.png);
+        background-size: contain;
+    }
+
+    #alien {
+        position: absolute;
+        top: 20px;
+        left: 80px;
+        width: 20px;
+        height: 20px;
+        background: url(./images/alien.png);
+        background-size: contain;
+    }
+
+    #missile {
+        position: absolute;
+        top: 270px;
+        left: 140px;
+        width: 10px;
+        height: 10px;
+
+        background: url(images/missile.png);
+        background-size: contain;
+    }
+
+    #explosion {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+
+        background: url(./images/explosion.png);
+        background-size: contain;
+    }
+</style>
+<body>
+<div class="main">
+    <div id="stage">
+        <div id="background"></div>
+        <!--<div id="platform" ></div>-->
+        <div id="aeroplane"></div>
+        <div id="missile"></div>
+        <div id="alien"></div>
+        <div id="explosion"></div>
+    </div><!--<div id="stage">-->
+    <p id="output">请输入 X 和 Y坐标（0-300），然后fire</p>
+    <input type="text" id="inputX" placeholder="X...">
+    <input type="text" id="inputY" placeholder="Y...">
+    <button>fire!</button>
+    <!--<button id="restart">restart</button>-->
+    <p>游戏说明：玩家通过猜测判断外星人的位置，然后点击"fire"或按回车键发射炮弹。如果猜中，则击中外星人，返回胜利画面。如果猜错，则炮弹数量减少，外星人继续接近地球。如果直到炮弹剩余量为0的时候都没有猜中，则游戏结束，地球遭遇侵略，玩家失败。(作弊：F12 控制台上查看外星人的坐标)</p>
+</div>
+
+<script type="text/javascript">
+    // 解题思路： 二叉排序树特点：左节点比根节点小，右节点比根节点大
+    function BinaryTree() {
+        var node = function (key) {
+            this.key = key;
+            this.left = null;
+            this.right = null;
+            // 为避免选取重复的节点，selected作为判断当前节点是否被外星人横坐标选过,选中设为true，选过后则设为false
+            this.selected = null;
+        };
+
+        // 默认根节点为空
+        var root = null;
+        // 插入新节点，创建二叉排序树
+        var insertNode = function (node, newNode) {
+            if (newNode.key < node.key) {
+                if (node.left === null) {
+                    node.left = newNode;
+                }
+                else {
+                    insertNode(node.left, newNode);
+                }
+            }
+            else {
+                if (node.right === null) {
+                    node.right = newNode;
+                }
+                else {
+                    insertNode(node.right, newNode);
+                }
+            }
+        };
+
+        // 插入值
+        this.insert = function (key) {
+            var newNode = new node(key);
+            // 当前节点为空，则赋予它新节点
+            if (root === null) {
+                root = newNode;
+            } else {
+                insertNode(root, newNode);
+            }
+        };
+
+        // 中序遍历
+        var inOrderTraverseNode = function (node, callback) {
+            if (node !== null) {
+                // 访问左子树
+                inOrderTraverseNode(node.left, callback);
+                // 访问当前节点
+                callback(node.key);
+                inOrderTraverseNode(node.right, callback);
+            }
+        };
+
+        // 中序遍历接口
+        this.inOrderTraverse = function (callback) {
+            inOrderTraverseNode(root, callback);
+        };
+
+        // 前序遍历算法
+        var preOrderTraverseNode = function (node, callback) {
+            if (node !== null) {
+                // callback(node.key);
+                // 传入node节点
+                callback(node);
+                preOrderTraverseNode(node.left, callback);
+                preOrderTraverseNode(node.right, callback);
+            }
+        };
+
+        // 前序遍历接口
+        this.preOrderTraverse = function (callback) {
+            preOrderTraverseNode(root, callback);
+        };
+
+        // 后序遍历算法
+        var postOrderTraverseNode = function (node, callback) {
+            if (node !== null) {
+                postOrderTraverseNode(node.left, callback);
+                postOrderTraverseNode(node.right, callback);
+                callback(node.key);
+            }
+        };
+
+        // 后序遍历接口
+        this.postOrderTraverse = function (callback) {
+            postOrderTraverseNode(root, callback);
+        }
+
+        // 查找最小值算法
+        var minNode = function (node) {
+            if (node) {
+                while (node && node.left !== null) {
+                    node = node.left;
+                }
+                return node.key;
+            }
+
+            return null;
+        };
+
+        // 查找最小值接口
+        this.min = function () {
+            return minNode(root);
+        };
+
+        // 查找最大值算法
+        var maxNode = function (node) {
+            if (node) {
+                while (node && node.right !== null) {
+                    node = node.right;
+                }
+                return node.key;
+            }
+
+            return null;
+        };
+
+        // 查找最大值接口
+        this.max = function () {
+            return maxNode(root);
+        };
+
+        // 查找指定值算法
+        var searchNode = function (node, key) {
+            if (node === null) {
+                return null;
+            }
+
+            if (key < node.key) {
+                return searchNode(node.left, key);
+            }
+            else if (key > node.key) {
+                return searchNode(node.right, key);
+            }
+            else {
+                // return true;
+                return node;
+            }
+        };
+
+        // 查找指定值接口
+        this.search = function (key) {
+            return searchNode(root, key);
+        };
+
+        // 查找最小节点，为删除含有左右字树的节点所用
+        var findMinNode = function () {
+            if (node) {
+                while (node && node.left !== null) {
+                    node = node.left;
+                }
+                return node;
+            }
+
+            return null;
+        };
+
+        // 删除节点算法
+        var removeNode = function (node, key) {
+            if (node === null) {
+                return null;
+            }
+
+            if (key < node.key) {
+                // 找到节点并删除节点后，把当前节点的左孩子指向删除节点的左孩子
+                node.left = removeNode(node.left, key);
+                return node;
+            }
+            else if (key > node.key) {
+                // 找到节点并删除节点后，把当前节点的右孩子指向删除节点的右孩子
+                node.right = removeNode(node.right, key);
+                return node;
+            }
+            else {
+                // 该节点是叶子节点
+                if (node.left === null && node.right === null) {
+                    node = null;
+                    return node;
+                }
+                // 该节点只有右子树
+                if (node.left === null) {
+                    // 删除当前节点
+                    node = node.right;
+                    // 返回被更新的节点
+                    return node;
+                }
+                // 该节点只有左子树
+                if (node.right === null) {
+                    // 删除当前节点
+                    node = node.left;
+                    return node;
+                }
+                // 该节点含有左子树和右子树
+                // 从当前节点右子树寻找最小节点
+                var aux = findMinNode(node.right);
+                // 把要删除的值更新为最小节点的值
+                node.key = aux.key;
+                // 删除当前节点的右子树下的最小节点
+                node.right = removeNode(node.right, aux.key);
+                // 得到新的二叉树
+                return node;
+            }
+        };
+
+        // 删除指定值接口
+        this.remove = function (key) {
+            root = removeNode(root, key);
+        }
+
+        // 转换为数组
+    }
+
+    function init() {
+        // 存储敌人横坐标值的数组
+        var nodes = [];
+        // 随机生成10个值
+        for(var i = 0; i < 10; i++) {
+            nodes.push(Math.floor(Math.random() * 281));
+        }
+
+        var binaryTree = new BinaryTree();
+        // 把节点存到二叉平衡树中
+        nodes.forEach(function(key) {
+            binaryTree.insert(key);
+        });
+
+        // 存储外星人节点的数组
+        var nodesForAlien = [];
+        // 回调函数
+        var callback = function(node) {
+            nodesForAlien.push(node);
+        };
+        // 先序遍历实现存储节点到数组中
+        binaryTree.preOrderTraverse(callback);
+        // 定义当前选择的节点
+        var alienNodeSelect = Math.floor(Math.random() * 9);
+        // 设置当前选中的节点为true
+        nodesForAlien[alienNodeSelect].selected = true;
+        // console.log(nodesForAlien);
+        // 给当前外星人的横坐标赋值
+        var alienX = nodesForAlien[alienNodeSelect].key;
+
+
+        // Game section
+        // 敌人起始纵坐标
+        var alienY = 20;
+        // guessX 和 guessY为用户猜测敌人的坐标值
+        var guessX = 0;
+        var guessY = 0;
+        // 我方剩余炮弹数量
+        var shotRemaining = 8;
+        // 我方用过的炮弹数量
+        var shotsMade = 0;
+        // 记录当前飞机状态
+        var gameState = '';
+        var gameWon = false;
+
+        var aeroplane = document.querySelector('#aeroplane');
+        var alien = document.querySelector('#alien');
+        var missile = document.querySelector('#missile');
+        var explosion = document.querySelector('#explosion');
+
+        var inputX = document.querySelector('#inputX');
+        var inputY = document.querySelector('#inputY');
+        var output = document.querySelector('#output');
+
+        var button = document.querySelector('button');
+        button.style.cursor = 'pointer';
+        button.addEventListener('click', clickHandler, false);
+        window.addEventListener('keydown', keydownHandler, false);
+
+        function clickHandler() {
+            // 验证输入的值是否有效
+            validateInput();
+        }
+
+        function keydownHandler(event) {
+            // 如果用户按回车键，即进入游戏
+            if (event.keyCode === 13) {
+                validateInput();
+            }
+        }
+
+        // 判断输入值是否合法
+        function validateInput() {
+            guessX = parseInt(inputX.value, 10);
+            guessY = parseInt(inputY.value, 10);
+
+            // 处理非数字
+            if (isNaN(guessX) || isNaN(guessY)) {
+                output.innerHTML = '请输入坐标值(数字)';
+                inputX.value = '';
+                inputY.value = '';
+            }
+            else if (guessX > 300 || guessY > 300) {
+                output.innerHTML = '坐标值不能大于300';
+                inputX.value = '';
+                inputY.value = '';
+                inputX.focus();
+            }
+            else {
+                playGame();
+            }
+        }
+
+        // 游戏执行函数
+        function playGame() {
+            shotRemaining = shotRemaining - 1;
+            shotsMade = shotsMade + 1;
+            gameState = '炮弹' + '， 数量：' + shotRemaining;
+
+            // 当前外星节点
+            var alienNode = binaryTree.search(guessX);
+            // 判断横坐标是否匹配
+            if (alienNode !== null && alienNode.selected === true) {
+                // 检测用户输入的炮弹纵坐标是否在敌人的范围之内
+                // 击中敌人
+                // 再判断纵坐标是否匹配
+                if (guessY <= alienY + 20 && guessY >= alienY) {
+                    gameWon = true;
+                    endGame();
+                }
+            }
+            // 横坐标没有匹配，则无需再判断纵坐标
+            else {
+                output.innerHTML = '没有击中！' + '<br>' + gameState;
+                if (shotRemaining < 1) {
+                    endGame();
+                }
+            }
+
+
+            if (!gameWon) {
+                // 取消原来选中的节点
+                nodesForAlien[alienNodeSelect].selected = false;
+                alienNodeSelect = Math.floor(Math.random() * 9);
+                // 赋予敌人新选中的节点
+                nodesForAlien[alienNodeSelect].selected = true;
+                // 敌人新的横坐标位置
+                alienX = nodesForAlien[alienNodeSelect].key;
+                alienY += 30;
+            }
+
+            // 重新渲染画面，更新敌人状态如位置的变化、是否死亡
+            render();
+            console.log('X：' + alienX);
+            console.log('Y：' + alienY);
+        }
+
+        function render() {
+            alien.style.left = alienX + 'px';
+            alien.style.top = alienY + 'px';
+
+            aeroplane.style.left = guessX + 'px';
+
+            missile.style.left = guessX + 'px';
+            missile.style.top = guessY + 'px';
+
+            // 如果击中敌人，则显示敌人爆炸
+            if (gameWon) {
+                explosion.style.display = 'block';
+                // 覆盖原来的图片位置
+                explosion.style.left = alienX + 'px';
+                explosion.style.top = alienY + 'px';
+
+                // 把原来的图片隐藏掉
+                alien.style.display = 'none';
+                missile.style.display = 'none';
+            }
+        }
+
+        // 游戏结束处理
+        function endGame() {
+            if (gameWon) {
+                output.innerHTML = 'Hit! 你拯救了地球' + '<br>' + '你发射了炮弹' + shotsMade + '枚';
+            }
+            else {
+                output.innerHTML = '失败了！' + '<br>' + '地球被外星人侵略！';
+            }
+
+            // 移除监听事件
+            button.removeEventListener('click', clickHandler, false);
+            button.disabled = true;
+
+            window.removeEventListener('keydown', keydownHandler, false);
+            inputX.disabled = true;
+            inputY.disabled = true;
+        }
+    }
+
+    init();
+//    var restartButton = document.querySelector('#restart');
+//    restartButton.addEventListener('click',function () {
+//        // 重置所有变量
+//
+//    });
+
+</script>
+</body>
+</html>
