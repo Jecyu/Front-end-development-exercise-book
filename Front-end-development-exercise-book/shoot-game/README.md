@@ -66,3 +66,7 @@
 
 		alien.style.display = 'none';
 		misslie.style.display = 'none';
+
+## 在线预览
+
+- [demo](https://jecyu.github.io/Front-end-development-exercise-book/shoot-game/index.html)
