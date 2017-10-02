@@ -1,0 +1,303 @@
+.index-banner {
+    position: relative;
+    background: #b3b3b3;
+}
+
+.index-banner-bg {
+    height: 570px;
+    overflow: hidden;
+}
+
+.index-banner-bg img {
+    margin: 0 auto;
+}
+
+.index-banner-text {
+    /*绝对定位的同时也把文字脱离文档流，可以直接覆盖到img标签上*/
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    /*通过测量文字的宽度，用负外边距来实现文字居中，文字宽度为776px，也可以通过transform: translateX(50%),但是要考虑兼容性问题*/
+    margin-left: -388px;
+}
+
+.index-banner-text .text-logo {
+    width: 776px;
+    height: 117px;
+    background: url("../images/index-banner-textlogo.png") no-repeat;
+}
+
+.index-banner-text .text-info {
+    margin-top: 17px;
+    text-align: center;
+    color: #fff;
+}
+
+.index-banner-text .text-info .line {
+    display: inline-block;
+    width: 40px;
+    border-top: 1px solid #fff;
+    /*使横线居中*/
+    vertical-align: middle;
+    /*for IE7*/
+    *margin-top: 22px;
+}
+
+/*.index-banner-text .text-info .line-left {*/
+/*margin-left: 26px;*/
+/*}*/
+
+.index-banner-text .text-info .text {
+    margin: 0 26px;
+}
+
+/*Menu*/
+.index-menu {
+    /*子元素可能涉及到绝对定位*/
+    position: relative;
+    border-top: 4px solid #f34949;
+}
+
+.index-menu .menu-tips {
+    width: 156px;
+    height: 75px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -78px;
+    text-align: center;
+    line-height: 65px;
+    color: #fff;
+    background: #f34949;
+}
+
+/*直接使用伪元素设置菜单的三角形*/
+/*.index-menu .menu-tips:after {*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*bottom: 0;*/
+    /*content: "";*/
+    /*width: 0;*/
+    /*height: 0;*/
+    /*!*menu是156px宽，所以这里设置78px*!*/
+    /*border-left: 78px solid transparent;*/
+    /*border-right: 78px solid transparent;*/
+    /*border-bottom: 10px solid #fff;*/
+/*}*/
+/*for IE 7*/
+.index-menu .menu-tips .triangle {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: "";
+    width: 0;
+    height: 0;
+    /*menu是156px宽，所以这里设置78px*/
+    border-left: 78px solid transparent;
+    border-right: 78px solid transparent;
+    border-bottom: 10px solid #fff;
+}
+
+.index-menu .menu-list {
+    margin-top: 150px;
+    color: #555;
+    /*列表项中偶数子项不需要外边距,可以在ul父容器中增加60px，多出来的外边距通过overflow隐藏*/
+    overflow: hidden;
+}
+
+/* 要把偶数项的margin-right去掉，因为总宽度超过1100px导致换行了
+    列表项中偶数子项不需要外边距,可以在ul父容器中增加60px，多出来的外边距通过设置父容器overflow隐藏
+    好处：这样处理就不用在对每一个偶数li添加特殊化样式，后端在用模版引擎输出需要额外判断。*/
+.index-menu .menu-list ul {
+    width: 1160px;
+}
+
+.index-menu .menu-item {
+    float: left;
+    width: 520px;
+    margin-right: 60px;
+    /*margin-bottom: 56px;*/
+    /*for IE7，解决下边距合并问题*/
+    padding-bottom: 56px;
+}
+
+.index-menu .menu-item .title,
+.index-menu .menu-item .line {
+    float: left;
+}
+
+.index-menu .menu-item .price {
+    float: right;
+}
+
+.index-menu .menu-item .title {
+    width: 230px;
+    /*超出的文字隐藏*/
+    overflow: hidden;
+    white-space: nowrap;
+    /*超出的部分省略号显示*/
+    /*text-overflow此属性需要在设置前面的两个属性下才能有效果*/
+    text-overflow: ellipsis;
+    color: #555;
+}
+
+.index-menu .menu-item .comment {
+    margin-top: 4px;
+    color: #b7b7b7;
+    font-size: 12px;
+}
+
+.index-menu .menu-item .line {
+    margin-top: 10px;
+    width: 192px;
+    border-top: 1px solid #e3e1e1;
+}
+
+.index-menu .menu-more-btn {
+    margin: 0 auto;
+    width: 114px;
+    height: 32px;
+    padding-left: 16px;
+    border: 1px solid #d7d5d5;
+    font-size: 14px;
+    /*居中文本*/
+    line-height: 32px;
+    color: #b7b7b7;
+}
+
+/*这里的图标可以用CSS3来做，为了兼容性，使用图标*/
+.index-menu .menu-more-btn .icon {
+    display: inline-block;
+    width: 11px;
+    height: 7px;
+    margin-left: 13px;
+    background: url("../images/index-btn-icon.gif") no-repeat;
+}
+
+/*Index-Panel*/
+.index-panel {
+    margin-top: 200px;
+}
+
+/*这里可以预作为js使用*/
+/*.index-panel-header {*/
+
+/*}*/
+
+.index-panel-header h3 {
+    float: left;
+    margin-right: 48px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #3b3b3b;
+}
+
+.index-panel-header .line {
+    float: left;
+    margin-top: 12px;
+    width: 200px;
+    border-top: 1px solid #e5e3e3;
+}
+
+.index-panel-header .btn-group {
+    float: right;
+    /*清除行内元素的4px空白间距*/
+    font-size: 0;
+}
+
+.index-panel-header .btn {
+    display: inline-block;
+    margin-left: 11px;
+    width: 9px;
+    height: 9px;
+    background: #dedede;
+    /*画圆*/
+    -moz-border-radius: 5px; /* Firefox */
+    -webkit-border-radius: 5px; /* Safari 和 Chrome http://www.manongjc.com/article/1214.html */
+    border-radius:5px; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+    /*for ie7、8*/
+    position: relative;
+    z-index:2;
+    behavior: url(../ie-css3.htc); /* 通知IE浏览器调用脚本作用于'btn'类 */
+}
+
+.index-panel-header .active {
+    background: #9b9b9b;
+}
+
+.index-panel-body {
+    margin-top: 75px;
+}
+
+.index-food-list {
+    /*去除右外边距超过的影响*/
+    overflow: hidden;
+}
+
+.index-food-list ul {
+    width: 1160px;
+}
+
+.index-food-list .food-item {
+    float: left;
+    width: 230px;
+    margin-right: 60px;
+}
+
+.index-food-list .food-item .banner {
+    margin-bottom: 30px;
+    height: 202px;
+}
+
+.index-food-list .food-item .name {
+    /*a标签reset样式里设置了文字color为白色，所以才看不见，需要设置为其他颜色*/
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.index-food-list .food-item .price {
+    float: right;
+}
+/* Star*/
+.index-food-list .food-item .star-bar {
+    font-size: 0px;
+}
+
+.index-food-list .food-item .star {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    background: url("../images/index-star.png") no-repeat;
+}
+
+.index-food-list .food-item .nostar {
+    background-position: 0 -10px;
+}
+/* END Star*/
+.index-pics {
+    height: 380px;
+    overflow: hidden;
+}
+
+.index-pics .pic-col {
+    float: left;
+}
+
+.index-pics .pic-col-m {
+    width: 353px;
+}
+
+.index-pics .pic-col-s {
+    width: 287px;
+}
+.index-pics .pic-col-l {
+    width: 460px;
+}
+/*END Index-Panel*/
+
+
+
+
+
+

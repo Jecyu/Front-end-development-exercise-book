@@ -1,0 +1,84 @@
+/*Public-Header*/
+.public-header {
+    height: 110px;
+    /*background-color: #d45d5c ;*/
+}
+
+.public-header .header-logo {
+    float: left;
+
+
+    /*居中文本（110-54）/2*/
+    margin-top: 44px;
+
+}
+
+.public-header .header-logo a {
+    width: 182px;
+    height: 54px;
+    background: url("../images/index-header-logo.png") no-repeat;
+}
+
+.public-header .header-nav {
+    float: right;
+    font-size: 14px;
+}
+
+.public-header .header-nav .item {
+    float: left;
+    margin-top: 44px;
+    margin-left: 50px;
+}
+
+.public-header .header-nav a {
+    color: #3b3b3b;
+}
+
+.public-header .header-nav a:hover {
+    text-decoration: underline;
+}
+.public-container {
+    position: relative;
+    width: 1100px;
+    margin: 0 auto;
+}
+/*END Public-Header*/
+/*Public-Footer*/
+.public-footer {
+    /*height: 318px;*/
+    /*减去内边距100px*/
+    margin-top: 200px;
+    padding-top: 100px;
+    height :218px;
+    background: #5a5b5b;
+}
+
+.public-footer .footer-col {
+    float: left;
+    width: 230px;
+
+    margin-right: 60px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #fff;
+}
+/*去掉最后一列的右边距离，移动端可以这样写，pc端需要清除兼容性*/
+/*.public-footer .footer-col:last-child {*/
+    /*margin-right: 0;*/
+/*}*/
+/*兼容IE7*/
+.public-footer .footer-col.footer-col-nor {
+    margin-right: 0;
+}
+
+.public-footer .footer-logo {
+    width: 182px;
+    height: 52px;
+    margin-top: -10px;
+    /*logo的距离为行高和margin-bottom的和*/
+    margin-bottom: 12px;
+    /*因为图片和容器大小一致，不用设定repeat了*/
+    background: url("../images/index-footer-logo.png") no-repeat;
+}
+
+/*END Public-Footer*/

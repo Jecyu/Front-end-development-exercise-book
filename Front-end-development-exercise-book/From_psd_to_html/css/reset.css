@@ -1,0 +1,37 @@
+body, div, dt, dd, ul, li, h1, h2, h3, h4, h5, h6, p, form,a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    display: block;
+    color: #fff;
+}
+
+img {
+    border: none;
+    display: block;
+}
+
+.clearfloat {
+    /*For IE 6/7 (trigger hasLayout)*/
+    /*前面设置了星号for IE 7，IE7 will display zoom: 1 because of the inline "*"*/
+    *zoom: 1;
+}
+
+.clearfloat:after {
+    /*这里如果设置display:table好处是不会发生外边距塌陷合并*/
+    display: table;
+    /*display: block;*/
+    content: ".";
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
