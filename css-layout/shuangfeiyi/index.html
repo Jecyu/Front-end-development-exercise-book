@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../favicon.ico">    
+    <link rel="stylesheet" href="../shuangfeiyi/index.css">
+    <link rel="stylesheet" href="../layout.css">
+    <title>🌽CSS常见布局</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+                <h2 class="header-title">CSS常见布局</h2>
+                <p class="header-info">
+                    CSS常见布局，如双飞翼布局、圣杯布局，适用于要求左右两层定宽，中间层宽度自适应优先渲染。
+                </p>
+                <p>区别：双飞翼布局是通过新建的div的外边距来隔离各列，而圣杯布局是通过父容器的内边距来实现各列的间隙</p>                  
+            <ul class="btn-groups">
+                <li class="btn-item">
+                    <a href="../shengbei/index.html" class="btn">圣杯</a>
+                </li>
+                <li class="btn-item active">
+                    <a href="../shuangfeiyi/index.html " class="btn">双飞翼</a>
+                </li>
+            </ul>            
+        </div>
+        </div>
+        <div class="page-wrap">
+            <div class="header">头部</div>
+            <div id="section-main">
+                <div id="main">
+                    <div id="main-inner">
+                        双飞翼布局，为了中间div内容不被遮挡，直接在中间div内部创建子div用于放置内容，在该子div里用margin-left和margin-right为左右两栏div留出位置。
+                    </div>
+                </div>
+                <div id="left-side">左侧边栏</div>     
+                <div id="right-side">右侧边栏</div> 
+            </div>                    
+            <div class="footer">尾部</div>    
+        </div>    
+    </div>  
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

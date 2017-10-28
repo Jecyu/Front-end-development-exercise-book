@@ -1,0 +1,57 @@
+/**
+ * @Author: Jecyu
+ * @Date: 2017-10-28 12:26:10 am 
+ * @Modified By: JeCyu 
+ * @Last Modified time: 2017-10-28 4:50:49 pm 
+ */
+
+.page-wrap {
+    /* width: 1000px; */
+    margin: 40px 100px;    
+}
+
+/* 圣杯布局 */
+#section-main {
+    overflow: auto;
+     /* 腾出对应的左右两层宽度 */
+    padding: 0 140px 0 160px;   
+    background: #888;
+}   
+
+#main {
+    float: left;
+
+    width: 100%;
+    height: 400px;
+    padding: 20px;
+     
+    background: #ff7400;
+}
+
+#left-side {
+    float: left;    
+    position: relative;
+    left: -160px;
+    
+    width: 140px;
+    height: 400px; 
+    margin-left: -100%;   
+    background: #1240ab;
+}
+
+#right-side {
+    float: left;        
+    position: relative;
+    right: -140px;
+
+    width: 120px;
+    height: 400px;
+    margin-left: -120px;
+    background: #00cc00;
+}
+
+.page-wrap .header,
+.page-wrap .footer {
+    height: 40px;
+    background: rgb(192, 159, 109);
+}

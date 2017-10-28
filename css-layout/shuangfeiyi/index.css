@@ -1,0 +1,53 @@
+/**
+ * @Author: Jecyu
+ * @Date: 2017-10-28 12:59:01 pm 
+ * @Modified By: JeCyu 
+ * @Last Modified time: 2017-10-28 5:07:51 pm 
+ */
+
+.page-wrap {
+    /* width: 1000px; */
+    margin: 40px 100px;    
+}
+
+/* 双飞翼布局 */
+#section-main {
+    overflow: auto; 
+    background: #888;
+}   
+
+#main {
+    float: left;
+    width: 100%;  
+}
+
+#main-inner {
+    height: 400px;
+    margin: 0 140px 0 160px;
+    padding: 20px;
+    background: #ff7400;
+}
+
+#left-side {
+    float: left;    
+    
+    width: 140px;
+    height: 400px; 
+    margin-left: -100%;   
+    background: #8b6;
+}
+
+#right-side {
+    float: left;        
+
+    width: 120px;
+    height: 400px;
+    margin-left: -120px;
+    background: #00a779;
+}
+
+.page-wrap .header,
+.page-wrap .footer {
+    height: 40px;
+    background: rgb(192, 159, 109);
+}
