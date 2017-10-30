@@ -1,0 +1,180 @@
+/**
+ * @Author: Jecyu
+ * @Date: 2017-10-30 11:29:02 am 
+ * @Modified By: JeCyu 
+ * @Last Modified time: 2017-10-30 6:03:59 pm 
+ */
+
+.page-wrap {
+    width: 1080px;
+    margin: 40px auto;
+}
+
+.page-wrap .demo-list {
+    width: 100%;
+    margin-right: -40px;
+}
+
+.page-wrap .demo-list .demo-item {
+    /* To center the carousel vertically in the viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    float: left;
+    width: 500px;
+    height: 500px;
+    margin: 0 10px 20px 10px;
+    border: 4px solid #ccc;
+    background: #fff;
+}
+
+
+/* 3D Cube */
+
+.cube {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    perspective: 1000px;
+}
+
+.cube figure {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: translateZ(-100px);
+    animation: rotate 5s ease infinite;
+}
+
+.cube figure img {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 0;
+    width: 200px;
+    height: 200px;
+    border: 2px solid #030000;
+}
+
+.cube figure .front {
+    transform: rotateY(0deg) translateZ(-100px);
+}
+
+.cube figure .back {
+    transform: rotateX(180deg) translateZ(-100px);
+}
+
+.cube figure .right {
+    transform: rotateY(90deg) translateZ(-100px);
+}
+
+.cube figure .left {
+    transform: rotateY(-90deg) translateZ(-100px);
+}
+
+.cube figure .top {
+    transform: rotateX(90deg) translateZ(-100px);
+}
+
+.cube figure .bottom {
+    transform: rotateX(-90deg) translateZ(-100px);
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotatex(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+}
+
+
+/* Rotating Carousel */
+
+.carousel {
+    perspective: 500px;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* container */
+}
+
+.carousel>* {
+    flex: 0 0 auto;
+}
+
+.carousel figure {
+    margin: 0;
+    width: 400px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    transform-origin: 50% 50% -482.8427124746px;
+}
+
+.carousel figure img {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 100px;
+}
+
+.carousel figure img:not(:first-of-type) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-origin: 50% 50% -482.8427124746px;
+}
+
+.carousel figure img:nth-child(2) {
+    transform: rotateY(45deg);
+}
+
+.carousel figure img:nth-child(3) {
+    transform: rotateY(90deg);
+}
+
+.carousel figure img:nth-child(4) {
+    transform: rotateY(135deg);
+}
+
+.carousel figure img:nth-child(5) {
+    transform: rotateY(180deg);
+}
+
+.carousel figure img:nth-child(6) {
+    transform: rotateY(225deg);
+}
+
+.carousel figure img:nth-child(7) {
+    transform: rotateY(270deg);
+}
+
+.carousel figure img:nth-child(8) {
+    transform: rotateY(315deg);
+}
+
+.carousel nav {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0;
+}
+
+.carousel nav button {
+    flex: 0 0 auto;
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid;
+    letter-spacing: 1px;
+    color: #333;
+    background: none;
+    cursor: pointer;
+}
+
+
+/*# sourceMappingURL=index.css.map */

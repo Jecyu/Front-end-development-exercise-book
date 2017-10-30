@@ -1,0 +1,200 @@
+/**
+ * @Author: Jecyu
+ * @Date: 2017-10-30 11:29:02 am 
+ * @Modified By: JeCyu 
+ * @Last Modified time: 2017-10-30 6:02:16 pm 
+ */
+
+.page-wrap {
+    width: 1080px;
+    margin: 40px auto;
+    
+    .demo-list {
+        width: 100%;
+        margin-right: -40px;
+
+        .demo-item {
+              /* To center the carousel vertically in the viewport */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            position: relative;
+            float: left;
+            
+            width:500px;
+            height: 500px;
+            margin: 0 10px 20px 10px;
+            border: 4px solid #ccc;
+            background: #fff;
+        }
+    }
+}
+
+
+
+
+// Cube configuration parameters 
+// Width of an image. 
+$item-width_cube: 200px;  
+// The space between the images. This will decrease the effective item width
+$item-separation_cube: 0; 
+$viewer-distance_cube: 1000px;
+
+// radius
+$apothem_cube: 100px; // == $item - width / 2
+
+/* 3D Cube */
+.cube {
+    position: relative;
+    width: $item-width_cube;
+    height: $item-width_cube;
+    margin: 0 auto;
+    perspective: $viewer-distance_cube;
+
+    figure {
+        position: absolute;
+        
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transform: translateZ(-$apothem_cube);
+        animation: rotate 5s ease infinite;
+
+        img {
+            position: absolute;
+            display: block;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0 $item-separation_cube / 2; 
+            width: $item-width_cube;
+            height: $item-width_cube;
+            border: 2px solid rgb(3, 0, 0);
+            // opacity: .8; 
+        }
+
+        .front {
+            transform: rotateY(0deg) translateZ(-$apothem_cube);
+        }
+
+        .back {
+            transform: rotateX(180deg) translateZ(-$apothem_cube);
+        }
+         .right {
+            transform: rotateY(90deg) translateZ(-$apothem_cube);
+        }
+         .left {
+            transform: rotateY(-90deg) translateZ(-$apothem_cube);
+        }
+        .top {
+            transform: rotateX(90deg) translateZ(-$apothem_cube);
+        }
+         .bottom {
+            transform: rotateX(-90deg) translateZ(-$apothem_cube);
+        }
+        
+    }
+
+}
+
+
+@keyframes rotate {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);    
+    }
+    100% {
+        transform: rotatex(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+}
+
+
+// Carousel configuration parameters 
+// Number of images
+$n: 8;  
+// Width of an image. In the Js version this value can be a percentage
+$item-width: 400px;  
+// The space between the images. This will decrease the effective item width
+$item-separation: 200px; 
+$viewer-distance: 500px;
+
+// radian
+$theta: 360 / $n;
+// radius
+$apothem: 482.842712474619px; // == $item - width / (2 * tan(PI / $n))
+
+/* Rotating Carousel */
+.carousel {
+    perspective: $viewer-distance; 
+    overflow: hidden;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    > * {
+        flex: 0 0 auto;
+    }
+
+    /* container */
+    figure {
+        margin: 0;
+        width: $item-width;
+        transform-style: preserve-3d;
+        transition: transform 0.5s;
+        transform-origin: 50% 50% (-$apothem);
+        // animation: carousel-rotate 6s ease infinite;
+
+        img {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 $item-separation / 2;
+
+            // opacity: 0.9;
+            
+            &:not(:first-of-type) {
+                position: absolute;
+                left: 0;
+                top: 0;
+                transform-origin: 50% 50% (-$apothem);
+            }
+
+            @for $i from 2 through $n {
+                &:nth-child(#{$i}) {
+                    transform: rotateY(#{($i - 1) * $theta}deg);
+                }
+            }
+        }
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0 0;
+
+        button {
+            flex: 0 0 auto;
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid;
+
+            letter-spacing: 1px;
+            color: #333;
+            background: none;
+            cursor: pointer;
+        }
+    }
+}
+
+// @keyframes carousel-rotate {
+//     0% {
+//         transform: rotateY(0deg);
+//     }
+//     100% {
+//         transform: rotateY(40deg);
+//     }
+// }
+
+
+
+
+

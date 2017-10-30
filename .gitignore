@@ -1,3 +1,6 @@
 /webpack-sample-project/
 npm-debug.log
 show-sort-animation.html
+/*.map
+/.sass-cache
+/sass-test
