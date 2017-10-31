@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-10-30 11:29:02 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-10-30 6:02:16 pm 
+ * @Last Modified time: 2017-10-30 6:17:36 pm 
  */
 
 .page-wrap {
@@ -139,7 +139,7 @@ $apothem: 482.842712474619px; // == $item - width / (2 * tan(PI / $n))
     figure {
         margin: 0;
         width: $item-width;
-        transform-style: preserve-3d;
+        transform-style: preserve-3d; // must
         transition: transform 0.5s;
         transform-origin: 50% 50% (-$apothem);
         // animation: carousel-rotate 6s ease infinite;

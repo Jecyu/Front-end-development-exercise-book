@@ -1,0 +1,26 @@
+/**
+ * @Author: Jecyu
+ * @Date: 2017-10-31 11:41:15 am 
+ * @Modified By: JeCyu 
+ * @Last Modified time: 2017-10-31 11:43:57 am 
+ */
+.page-wrap {
+  width: 1080px;
+  margin: 40px auto; }
+  .page-wrap .demo-list {
+    width: 100%;
+    margin-right: -40px; }
+    .page-wrap .demo-list .demo-item {
+      /* To center the carousel vertically in the viewport */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      float: left;
+      width: 250px;
+      height: 280px;
+      margin: 0 10px 20px 10px;
+      background: url(../image/1.jpg) no-repeat;
+      background-size: cover; }
+
+/*# sourceMappingURL=index.css.map */
