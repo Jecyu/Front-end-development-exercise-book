@@ -34,14 +34,71 @@
         </div>
         <div class="page-wrap">            
             <ul class="demo-list clearfix">
-                <li class="demo-item">
-                    <div class="loading loading-1">
+                <li class="demo-item item-1">
+                    <div class="caption">
+                        <div class="block-title">
+                            <h2 class="streamer slideIn">Welcome to Jecyu</h2>
+                            <h3 class="breathe slideIn">Click me</h3>
+                        </div>
                     </div>
+                    <img src="../image/3-1.jpg" alt="">
+                </li> 
+                
+                <li class="demo-item item-2">
+                    <div class="caption">
+                        <div class="block-title">
+                            <h2>Welcome to Jecyu</h2>
+                            <p>Have a good time today</p>
+                            <p>Have a good time today</p>
+                            <p>Have a good time today</p>
+                        </div>
+                    </div>
+                    <img src="../image/3-2.jpg" alt="">
+                </li> 
+                <li class="demo-item item-3">
+                    <div class="caption">
+                        <div class="block-title">
+                            <h2>Welcome to Jecyu</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.</p>
+                        </div>
+                    </div>
+                    <img src="../image/3-3.jpg" alt="">
+                </li> 
+                <li class="demo-item item-4">
+                    <div class="caption">
+                        <div class="block-title">
+                            <h2>Welcome to Jecyu</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.</p>
+                        </div>
+                    </div>
+                    <img src="../image/3-4.jpg" alt="">
+                </li>
+                <li class="demo-item item-5">
+                    <div class="caption">
+                        <div class="block-title">
+                            <h2 class="zero">Welcome to Jecyu</h2>
+                            <p class="zero">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.</p>
+                        </div>
+                    </div>
+                    <img src="../image/3-5.jpg" alt="">
+                </li>
+                <li class="demo-item item-6">
+                    <div class="caption">
+                        <div class="block-title">
+                            <h2>Welcome to Jecyu</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost.</p>
+                        </div>
+                    </div>
+                    <img src="../image/3-6.jpg" alt="">
                 </li>
             </ul>        
         </div>    
     </div>  
     <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="./index.js"></script>
+    <script>
+        $('.btn-item').on('click', function() {
+            $(this).addClass('active').siblings('.btn-item').removeClass('active');
+        })
+    </script>
 </body>
 </html>

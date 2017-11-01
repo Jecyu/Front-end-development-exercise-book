@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-10-31 11:41:15 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-10-31 11:43:57 am 
+ * @Last Modified time: 2017-11-01 12:24:36 pm 
  */
  .page-wrap {
     width: 1080px;
@@ -10,24 +10,312 @@
     
     .demo-list {
         width: 100%;
-        margin-right: -40px;
 
         .demo-item {
               /* To center the carousel vertically in the viewport */
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             justify-content: center;
+            align-items: center;
 
             position: relative;
+            overflow: hidden;
             float: left;
             
-            width: 250px;
-            height: 280px;
+            width: 340px;
+            height: 260px;
             margin: 0 10px 20px 10px;
-            background: url(../image/1.jpg) no-repeat;
-            background-size: cover;
+
+            background: #b772c0;
+            // background: url(../image/1.jpg) no-repeat;
+            // background-size: cover;
+            cursor: pointer;
+
+           
         }
     }
 }
 
+.demo-item {
+    .caption {
+        position: absolute;
+        z-index: 1;
+        .block-title {
+            position: relative; // visibility: hidden;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+        }
+     }
 
+     img {
+         width: 100%;
+         height: 100%;
+     }
+
+     &:hover img {
+         filter: blur(1.5px);
+     }
+}
+
+
+// browser-prefix
+@mixin prefix($declarations, $prefixes: ()) {
+    @each $property, $value in $declarations {
+        @each $prefix in $prefixes {
+            -#{$prefix}-#{$property}: $value;
+        } 
+        // output standara non-prefixed declaration
+        #{$property}: $value;
+    }
+}
+
+// effect-1
+// Text streamer animation
+.item-1 { 
+    & .caption {     
+        
+        & .block-title {   
+
+            // to achieve both sides of border spread
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                overflow: hidden;
+                visibility: hidden;
+
+                border: 3px solid ghostwhite;
+                box-sizing: border-box;
+                transition: all .5s;
+            }
+            
+            &::before {
+                left: 0;
+                top: 50%;
+                
+                width: 100%;
+                height: 0;
+                border-width: 0 3px;
+            }
+        
+            &::after {
+                left: 50%;
+                top: 0;
+        
+                width: 0;
+                height: 100%;
+                border-width: 3px 0;
+            }
+        }   
+    }
+    
+  
+
+    &:hover .block-title .slideIn {
+        // visibility: visible;
+        opacity: 1;
+        transform: translate(0);
+    }
+
+    &:hover .caption .block-title::before {
+        height: 100%;
+        top: 0;
+        visibility: visible;
+    }
+    &:hover .caption .block-title::before {
+        top: 0;
+        height: 100%;
+        visibility: visible;
+    }
+    &:hover .caption .block-title::after {
+        left: 0;
+        width: 100%;
+        visibility: visible;
+    }
+}
+
+// text animation
+.streamer {
+    background-image: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-size: 200% 100%;
+    
+    @include prefix((
+        animation: streamer-animation 5s infinite linear    
+    ), webkit moz o);
+}
+
+.breathe {
+      @include prefix(( animation: breathe-animation 5s infinite linear), webkit moz o);
+}
+
+.slideIn {
+    opacity: 0;
+    transform: translate(0, 30px);
+    transition: all .5s;
+}
+
+@keyframes streamer-animation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+@keyframes breathe-animation {
+    0% {
+        color:  #E6D205;
+    }
+    25% {
+        color: #a3411b;
+    }
+    50% {
+        color:  #E6D205;        
+    }
+    75% {
+        color: #a3411b;        
+    }
+    100% {
+        color:  #E6D205;        
+    }
+}
+
+// item-2
+// text slideIn
+.item-2 {
+    .caption {
+        position: absolute;
+        left: 0;
+        top: 0;
+        
+        .block-title {
+            p {
+                margin: 10px 0;
+                color: #1d1d1d;
+                background: #fff;
+
+                opacity: 0;
+                transform: translateX(-100px);
+                transition: all .6s ease;
+
+                &:nth-child(3) {
+                    transition-delay: .2s;
+                }
+
+                &:nth-child(4) {
+                    transition-delay: .4s;
+                }
+            }
+        }
+    }
+
+    &:hover  {
+        .block-title {
+            p {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    }
+}
+
+// item-3
+// image-scale
+.item-3 {
+    & img {
+        @include prefix((transform:scale(1)), webkit ms);
+        -webkit-transform: scale(1);
+        -webkit-transition: -webkit-transform 1s;
+    }
+    &:hover{
+        // box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
+    }
+    &:hover img {
+        -webkit-transform: scale(1.5, 1.5);
+    }
+}
+
+// item-4
+// the image will fly to its right to reveal the caption
+.item-4 {
+    
+    & img {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        right: 0;
+        
+        @include prefix((
+            transition: top right .4s ease-in-out
+        ), webkit moz o)  
+    }
+
+    &:hover img {
+        top: -250px;
+        right: -350px;
+    }
+}
+
+// item-5
+// the image will move down to its bottom to reveal the caption
+.item-5 {
+    
+    & .caption {
+        top: 0;
+    }
+        
+    & .zero {
+        margin: 0;
+    }
+    
+    & img {
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        bottom: 0;
+        @include prefix((
+            transition: bottom .3s ease-in-out
+        ), webkit moz o)     
+    }
+
+    &:hover img {
+        bottom: -96px;
+    }
+}
+
+// item-6
+// the image will rotate to reveal the caption
+.item-6 {
+    & .caption {
+        @include prefix((
+            transform: rotateY(-180deg),
+            transition: all .5s
+        ), webkit moz o);
+    }
+    & img {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+
+        backface-visibility: hidden;
+         @include prefix((transition: all .5s), webkit moz o);
+                            
+    }
+
+    &:hover { 
+        img {
+             @include prefix((transform: rotateY(180deg)), webkit moz o);
+        }
+
+        .caption {
+            @include prefix((transform: rotateY(0deg)), webkit moz o );
+        }
+    }
+}
