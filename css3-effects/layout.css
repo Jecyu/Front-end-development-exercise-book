@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-10-27 11:38:08 pm 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-01 10:02:43 am 
+ * @Last Modified time: 2017-11-03 11:56:35 am 
  */
 
 html {
@@ -98,7 +98,7 @@ img {
 
 .btn:hover,
 .btn:focus {
-    color: #333;
+    color: darkcyan;
     border: 1px solid lightblue;
 }
 

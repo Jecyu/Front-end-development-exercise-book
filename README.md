@@ -1,4 +1,4 @@
-前端练习本
+Be the master of study.
 ==================
 
 

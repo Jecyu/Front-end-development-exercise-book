@@ -1,0 +1,39 @@
+/**
+ * @Author: Jecyu
+ * @Date: 2017-11-03 10:16:47 am 
+ * @Modified By: JeCyu 
+ * @Last Modified time: 2017-11-03 11:23:57 pm 
+ */
+.page-wrap {
+  width: 1080px;
+  margin: 40px auto;
+}
+.page-wrap .demo-list {
+  width: 100%;
+}
+.page-wrap .demo-list .demo-item {
+  /* To center the carousel vertically in the viewport */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  width: 340px;
+  height: 400px;
+  margin: 0 10px 20px 10px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.demo-item img {
+  opacity: 1;
+  -webkit-transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.demo-item:hover img {
+  filter: blur(1.5px);
+}

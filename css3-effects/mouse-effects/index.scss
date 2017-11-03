@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-10-31 11:41:15 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-01 12:24:36 pm 
+ * @Last Modified time: 2017-11-03 11:08:15 am 
  */
  .page-wrap {
     width: 1080px;
@@ -252,7 +252,7 @@
         right: 0;
         
         @include prefix((
-            transition: top right .4s ease-in-out
+            transition: all .4s ease-in-out
         ), webkit moz o)  
     }
 
