@@ -40,8 +40,10 @@ var page = {
         var winH  = $(window).height();
         // 滚动条距离顶部高度
         var scrollT = $(window).scrollTop();
-        // 元素上侧偏移祖先元素demo-item（position不为static）的距离
+        // 元素上侧偏移Document顶部的距离
         var offsetH = $el.offset().top;
+
+        // console.log(' offsetH:' + offsetH + ' winH:' + winH + ' scrollT:'  + scrollT);
 
         if (offsetH < winH + scrollT) {
             return true;
@@ -53,7 +55,10 @@ var page = {
     // 显示图片,把data-src值赋给src
     showImage: function($el) {
         var _this = this;
+        // $el.siblings('.loading').hide();
+
         $el.attr('src', $el.attr('data-src'));
+        $el.css({'height': '100%', 'width': '100%'} );
     },
 
 };
@@ -61,3 +66,4 @@ var page = {
 $(function() {
     page.init();
 });
+

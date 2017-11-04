@@ -1,0 +1,78 @@
+/**
+ * @Author: Jecyu
+ * @Date: 2017-11-04 9:29:49 am 
+ * @Modified By: JeCyu 
+ * @Last Modified time: 2017-11-04 1:29:43 pm 
+ */
+.page-wrap {
+  margin: 40px auto;
+}
+.page-wrap .demo-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.page-wrap .demo-list .demo-item {
+  /* To center the carousel vertically in the viewport */
+  flex: 0 0 1;
+  width: 60%;
+  height: 420px;
+  margin: 0 10px 20px 10px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.item-1 .tab-head, .item-2 .tab-head {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background: rgba(114, 40, 114, 0.6);
+}
+.item-1 .tab-head .tablinks, .item-2 .tab-head .tablinks {
+  float: left;
+  padding: 14px 16px;
+  border: none;
+  font-size: 16px;
+  color: #fff;
+  background: rgba(114, 40, 114, 0.6);
+  outline: none;
+  cursor: pointer;
+  transition: .3s;
+}
+.item-1 .tab-head .tablinks:hover, .item-2 .tab-head .tablinks:hover {
+  background: rgba(114, 40, 114, 0.1);
+}
+.item-1 .tab-head .tablinks.active, .item-2 .tab-head .tablinks.active {
+  background: #702870;
+}
+.item-1 .tab-content, .item-2 .tab-content {
+  display: none;
+  padding: 6px 12px;
+  border-top: none;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.item-2 .tab-head {
+  float: left;
+  width: 30%;
+  height: 100%;
+}
+.item-2 .tab-head .tablinks {
+  width: 100%;
+}
+.item-2 .tab-body {
+  position: relative;
+  float: left;
+  width: 70%;
+}
