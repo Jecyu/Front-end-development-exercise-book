@@ -1,0 +1,118 @@
+/**
+ * @Author: Jecyu
+ * @Date: 2017-11-04 5:10:49 pm 
+ * @Modified By: JeCyu 
+ * @Last Modified time: 2017-11-04 11:16:35 pm 
+ */
+
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=PT+Mono');
+
+
+$bg: #0d0630;
+$itemBg1: #18314f;
+$itemBg2: #8bbeb2;
+$itemBg3: #e6f9af;
+$itemBg4: #384E77;
+$counterBg: #222;
+@mixin setColorAndHover($baseColor) {
+    color: $baseColor;
+    &:hover {
+        background: lighten($baseColor, 8%);
+    }
+}
+
+body,
+html {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    // background: $bg;
+    font-family: "PT Mono", monospace;
+}
+
+.page-wrap {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.masonry {
+    display: flex;
+    flex-direction: column;
+    @media only screen and (min-width: 500px) {
+        flex-direction: row;
+    }
+}
+
+.column {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    
+    @media only screen and (min-width: 500px) {
+        width: calc(100%/5);
+    }
+}
+
+.item {
+    box-sizing: border-box;
+    padding: 10px;
+    counter-increment: item-counter;
+    
+    &-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        height: 220px;
+        font-size: 40px;
+        color: darken($bg, 5%);
+        background: currentColor;
+        box-sizing: border-box;
+        @include setColorAndHover($itemBg1);
+        
+        &:before {
+            content: counter(item-counter);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2em;
+            height: 2em;
+            line-height: 2em;
+            text-align: center;
+            font-size: 13px;
+            background-color: $counterBg;
+        }
+
+        &:after {
+            color: darken($bg, 10%);
+            content: 'ಠ‿ಠ';
+        }
+
+        &--small {
+            @include setColorAndHover($itemBg2);
+            height: 100px;
+            &:after {
+                content: '♥◡♥';
+            }
+        }
+        
+        &--medium {
+            @include setColorAndHover($itemBg3);
+            height: 175px;
+            &:after {
+                content: '◔ᴗ◔';
+            }
+        }
+        
+        &--large {
+            @include setColorAndHover($itemBg4);
+            height: 280px;
+            &:after {
+                content: 'ಠ_๏';
+            }
+        }
+    }
+}

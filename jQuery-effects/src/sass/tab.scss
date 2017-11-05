@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-11-04 9:29:49 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-04 1:29:43 pm 
+ * @Last Modified time: 2017-11-04 3:25:22 pm 
  */
 
 @import "./_browser-profix.scss";
@@ -10,20 +10,18 @@
     margin: 40px auto;
     
     .demo-list {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
+
         position: relative;
         overflow: hidden;
         width: 100%;
         
         .demo-item {
-            /* To center the carousel vertically in the viewport */   
-            flex: 0 0 1;
-            width: 60%;
+
+
+            width: 70%;
             height: 420px;
-            margin: 0 10px 20px 10px;
+            margin: 20px auto;
+
             background: #fff; 
             cursor: pointer;
         }
