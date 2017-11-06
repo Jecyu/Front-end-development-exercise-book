@@ -2,7 +2,7 @@
  * @Author: jeCyu
  * @Date: 2017-10-09 8:57:41 am 
  * @Modified By: jeCyu 
- * @Last Modified time: 2017-11-06 8:06:51 pm 
+ * @Last Modified time: 2017-11-06 9:42:42 pm 
  */
 
 'use strict';
@@ -12,8 +12,14 @@ var masonry = {
     init: function () {
         this.bindEvent();
         this.loadMore();
+        this.onLoad();
         this.page = 1;
         
+    },
+    onLoad: function () {
+        // $('.demo-item').html('<div class="loading"></div>');
+        // 给予按钮激活状态
+        $('.btn-groups .item-3').addClass('active');
     },
     bindEvent: function () {
         var _this = this;

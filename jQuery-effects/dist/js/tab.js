@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-11-04 10:29:27 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-04 1:29:28 pm 
+ * @Last Modified time: 2017-11-06 9:39:54 pm 
  */
 'use strict';
 // page逻辑
@@ -16,6 +16,10 @@ var page = {
         // default tab
         $('#tab-1').show();
         $('#tab-5').show();
+      
+        // 给予按钮激活状态
+        $('.btn-groups .item-2').addClass('active');
+       
     },
     bindEvent: function () {
         var _this = this;

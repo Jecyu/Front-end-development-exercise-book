@@ -8,6 +8,8 @@ var page = {
     },
     onLoad: function() {
         // $('.demo-item').html('<div class="loading"></div>');
+        // 给予按钮激活状态
+        $('.btn-groups .item-1').addClass('active');
     },
     bindEvent: function() {
         var _this = this;
