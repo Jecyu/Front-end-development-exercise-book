@@ -2,8 +2,10 @@
  * @Author: Jecyu
  * @Date: 2017-10-27 11:38:08 pm 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-04 7:43:11 pm 
+ * @Last Modified time: 2017-11-06 7:24:11 pm 
  */
+
+$basecolor: #722872;
 
 html,
 body {
@@ -81,7 +83,7 @@ img {
 
         &.active a {
             color: #fff;
-            background: #722872;
+            background: $basecolor;
         }
      }
 }
@@ -96,7 +98,7 @@ img {
     line-height: 20px;
     vertical-align: middle;
     text-align: center;
-    color: #722872;
+    color: $basecolor;
     background: #fff;
     cursor: pointer;
     outline: none;

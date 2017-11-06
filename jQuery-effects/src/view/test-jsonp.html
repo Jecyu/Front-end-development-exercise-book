@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <script type="text/javascript">
+        function myCallbackFunction(response) {
+            // var meta = response.collections;
+            var data = response.collections;
+            // console.log(meta);
+            // console.log(data[0].owners[0].username);
+            console.log(data[0].project_covers[0].url);
+            // console.log(data[0]);
+        }
+
+        var script = document.createElement('script');
+        script.src = 'http://www.behance.net/v2/collections?q=candy&api_key=h51ku2MaKzDtqV5LSU4amRjPcfYKMPU9&callback=myCallbackFunction';
+
+        document.getElementsByTagName('head')[0].appendChild(script);
+    </script>
+</head>
+
+<body>
+    <p>Open up your browser's console.</p>
+</body>
+</html

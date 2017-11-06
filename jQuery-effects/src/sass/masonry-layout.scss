@@ -2,15 +2,15 @@
  * @Author: Jecyu
  * @Date: 2017-11-04 5:10:49 pm 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-04 11:16:35 pm 
+ * @Last Modified time: 2017-11-06 7:56:51 pm 
  */
 
 @charset "utf-8";
-@import url('https://fonts.googleapis.com/css?family=PT+Mono');
+// @import url('https://fonts.googleapis.com/css?family=PT+Mono');
 
-
-$bg: #0d0630;
-$itemBg1: #18314f;
+$basecolor: #722872;
+$bg: rgb(235,235,235);
+$itemBg1: #fff;
 $itemBg2: #8bbeb2;
 $itemBg3: #e6f9af;
 $itemBg4: #384E77;
@@ -19,6 +19,8 @@ $counterBg: #222;
     color: $baseColor;
     &:hover {
         background: lighten($baseColor, 8%);
+        opacity: 1;
+        -webkit-filter: brightness(90%);
     }
 }
 
@@ -28,7 +30,7 @@ html {
     width: 100%;
     height: 100%;
     // background: $bg;
-    font-family: "PT Mono", monospace;
+    // font-family: "PT Mono", monospace;
 }
 
 .page-wrap {
@@ -37,10 +39,30 @@ html {
 }
 
 .masonry {
-    display: flex;
-    flex-direction: column;
-    @media only screen and (min-width: 500px) {
-        flex-direction: row;
+    // display: flex;
+    // flex-direction: column;
+    // @media only screen and (min-width: 500px) {
+    //     flex-direction: row;
+    // }
+
+    // 使用CSS3多列布局
+    column-count: 1;
+    column-gap: 0;
+    
+    @media screen and (min-width: 400px) {
+        column-count: 2;
+    }
+
+    @media screen and (min-width: 600px) {
+        column-count: 3;
+    }
+
+    @media screen and (min-width: 800px) {
+        column-count: 4;
+    }
+
+    @media screen and (min-width: 1000px) {
+        column-count: 5;
     }
 }
 
@@ -50,7 +72,7 @@ html {
     width: 100%;
     
     @media only screen and (min-width: 500px) {
-        width: calc(100%/5);
+        width: calc(100%/4);
     }
 }
 
@@ -58,6 +80,7 @@ html {
     box-sizing: border-box;
     padding: 10px;
     counter-increment: item-counter;
+    break-inside: avoid;
     
     &-content {
         position: relative;
@@ -66,15 +89,17 @@ html {
         justify-content: center;
         align-items: center;
         
-        height: 220px;
-        font-size: 40px;
+        // height: 220px;
+        padding: 10px;
+        font-size: 14px;
         color: darken($bg, 5%);
-        background: currentColor;
+        background: $itemBg1;
+        opacity: .98;
         box-sizing: border-box;
-        @include setColorAndHover($itemBg1);
+        // @include setColorAndHover($itemBg1);
         
         &:before {
-            content: counter(item-counter);
+            // content: counter(item-counter);
             position: absolute;
             top: 0;
             left: 0;
@@ -88,14 +113,14 @@ html {
 
         &:after {
             color: darken($bg, 10%);
-            content: 'ಠ‿ಠ';
+            // content: 'ಠ‿ಠ';
         }
 
         &--small {
             @include setColorAndHover($itemBg2);
             height: 100px;
             &:after {
-                content: '♥◡♥';
+                // content: '♥◡♥';
             }
         }
         
@@ -103,7 +128,7 @@ html {
             @include setColorAndHover($itemBg3);
             height: 175px;
             &:after {
-                content: '◔ᴗ◔';
+                // content: '◔ᴗ◔';
             }
         }
         
@@ -111,8 +136,40 @@ html {
             @include setColorAndHover($itemBg4);
             height: 280px;
             &:after {
-                content: 'ಠ_๏';
+                //  content: 'ಠ_๏';
             }
         }
+
+        // content
+        & .item-img {
+            width: 100%;
+            @include setColorAndHover($itemBg1);          
+        }
+
+        & .item-title {
+            color: darken($itemBg4, 5%);           
+        }
+        & .item-description {
+            color: darken($itemBg4, 5%);
+            // text-overflow: 
+        }
+        
+    }
+}
+
+.loading {
+    margin: 20px auto;
+    background: none;
+
+    .load-more {
+        display: block;
+        height: 20px;
+        line-height: 20px;
+        width: 100px;
+        padding: 6px 4px;
+        text-align: center;
+        background: $basecolor;
+        @include setColorAndHover($basecolor);
+        color: #fff;
     }
 }
