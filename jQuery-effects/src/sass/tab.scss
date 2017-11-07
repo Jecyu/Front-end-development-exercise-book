@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-11-04 9:29:49 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-04 3:25:22 pm 
+ * @Last Modified time: 2017-11-07 4:06:49 pm 
  */
 
 @import "./_browser-profix.scss";
@@ -17,13 +17,16 @@
         
         .demo-item {
 
-
-            width: 70%;
+            width: 80%;
             height: 420px;
             margin: 20px auto;
 
             background: #fff; 
             cursor: pointer;
+
+            @media screen and (max-width: 400px) {
+                width: 100%;
+            }
         }
     }
 }
@@ -33,19 +36,22 @@
         overflow: hidden;
         border: 1px solid #ccc;
         background: rgba(114, 40, 114, .6);
+        
         .tablinks {
             float: left;
             padding: 14px 16px;
             border: none;
-            font-size: 16px;
+
             color: #fff;
             background: rgba(114, 40, 114, .6);
             outline: none;
             cursor: pointer;
             transition: .3s;
+
             &:hover {
                 background: rgba(114, 40, 114, .1);
             }
+            
             &.active {
                 background: rgb(112, 40, 112)
             }

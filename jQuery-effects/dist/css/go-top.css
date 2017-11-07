@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-11-03 10:16:47 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-06 11:31:54 pm 
+ * @Last Modified time: 2017-11-07 4:02:10 pm 
  */
 .page-wrap {
   margin: 40px auto;
@@ -25,6 +25,16 @@
   background: #fff;
   cursor: pointer;
 }
+@media screen and (max-width: 400px) {
+  .page-wrap .demo-list .demo-item {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .page-wrap {
+    width: 100%;
+  }
+}
 
 .demo-item img {
   opacity: 1;
@@ -42,10 +52,10 @@
   position: fixed;
   right: 50px;
   bottom: 50px;
+  z-index: 400;
   width: 40px;
   height: 40px;
   cursor: pointer;
-  opacity: 1;
   color: #722872;
 }
 #toTop:hover {
@@ -59,5 +69,6 @@
   overflow: hidden;
   text-indent: -999em;
   background: url(../image/arrowTop.png) no-repeat center;
+  opacity: .9;
   -webkit-filter: hue-rotate(-30deg);
 }

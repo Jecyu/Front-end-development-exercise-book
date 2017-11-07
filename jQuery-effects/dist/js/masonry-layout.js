@@ -2,7 +2,7 @@
  * @Author: jeCyu
  * @Date: 2017-10-09 8:57:41 am 
  * @Modified By: jeCyu 
- * @Last Modified time: 2017-11-06 9:42:42 pm 
+ * @Last Modified time: 2017-11-07 4:29:12 pm 
  */
 
 'use strict';
@@ -59,13 +59,15 @@ var masonry = {
                 // 请求成功        
                 // if ('ok' === res.status) {
                 //     res = JSON.parse(res);
-                //     $('.message').html(JSON.stringify(json));
-                //     // _this.dataArr = res.articles;
                     
                 //     // 渲染数据到目标容器内
                 //     // _this.renderHtml();
                 // }
 
+            },
+
+            error: function(err) {
+                console.log(err);
             }
         });
     },
@@ -111,7 +113,7 @@ var masonry = {
         if (_this.checkInView($loading)) {
             setTimeout(function () {
                 _this.request();
-            }, 200);
+            }, 100);
         } 
     },
     // 检查Loading元素是否可视区域 true || false，如果在可视区域则自动请求加载更多

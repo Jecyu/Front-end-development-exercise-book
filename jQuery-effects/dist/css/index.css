@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-11-03 10:16:47 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-04 9:35:58 am 
+ * @Last Modified time: 2017-11-07 3:58:34 pm 
  */
 .page-wrap {
   width: 1080px;
@@ -25,6 +25,16 @@
   margin: 0 10px 20px 10px;
   background: #fff;
   cursor: pointer;
+}
+@media screen and (max-width: 400px) {
+  .page-wrap .demo-list .demo-item {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .page-wrap {
+    width: 100%;
+  }
 }
 
 .demo-item img {
