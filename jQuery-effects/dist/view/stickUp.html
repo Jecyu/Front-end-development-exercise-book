@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../css/layout.css" type="text/css">
 
 
-    <link rel="stylesheet" href="../css/tab.css" type="text/css">
+    <link rel="stylesheet" href="../css/stickUp.css" type="text/css">
     <title>🌽stickUp</title>
 </head>
 
@@ -17,9 +17,7 @@
     <div class="container">
         <div class="header">
             <h2 class="header-title">jQuery的常见特效---stickUp</h2>
-            <p class="header-info">
-                 在浏览网页内容离顶部 有一段距离时，出现快速回到网页顶部的工具，从而能使我们的网页更人性化。
-            </p>
+            <p class="header-info">当滚动条滚动到一定距离后，让导航栏固定在页面顶部</p>
             <ul class="btn-groups">
     <li class="btn-item item-1">
         <a href="./index.html" class="btn">懒加载</a>
@@ -40,68 +38,96 @@
         </div>
     </div>
     <div class="page-wrap">
-        <div class="demo-list">
-            <div class="demo-item item-1">
-                <ul class="tab-head">
-                    <li class="tablinks active" data-tab="tab-1">HTML
-                        </>
-                        <li class="tablinks" data-tab="tab-2">CSS
-                            </>
-                            <li class="tablinks" data-tab="tab-3">Javascript</li>
-                            <li class="tablinks" data-tab="tab-4">jQuery</li>
-                </ul>
-                <div class="tab-body">
-                    <div id="tab-1" class="tab-content">
-                        <h3>HTML</h3>
-                        <p>HTML is the standard markup language for creating Web pages.</p>
-                    </div>
-                    <div id="tab-2" class="tab-content">
-                        <h3>CSS</h3>
-                        <p>CSS is a language that describes the style of an HTML document.</p>
-                    </div>
-                    <div id="tab-3" class="tab-content">
-                        <h3>JavaScript</h3>
-                        <p>JavaScript Can Change HTML Content</p>
-                    </div>
-                    <div id="tab-4" class="tab-content">
-                        <h3>jQuery</h3>
-                        <p>jQuery is a lightweight, "write less, do more", JavaScript library.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="demo-item item-2">
-                <ul class="tab-head">
-                    <li class="tablinks active" data-tab="tab-5">HTML
-                        </>
-                        <li class="tablinks" data-tab="tab-6">CSS
-                            </>
-                            <li class="tablinks" data-tab="tab-7">Javascript</li>
-                            <li class="tablinks" data-tab="tab-8">jQuery</li>
-                </ul>
-                <div class="tab-body">
-                    <div id="tab-5" class="tab-content">
-                        <div class="caption">
-                            <h3>HTML</h3>
-                            <p>HTM L is the standard markup language for creating Web pages.</p>
+        <div class="nav">
+            <a href="#top" class="logo">
+                <img src="../image/logo.png" alt="website logo">
+            </a>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#top">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#top">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#portfolio">PORTFOLIO</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <section id="top" class="section">
+                <div class="personal-info">
+                    <div class="media">
+                        <div class="media-head">
+                            <img src="../image/avatar.png" class="img-circle" alt="avatar Jecyu">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">林济煜</h4>
+                            <p>嗨，我是林济煜，一个没有故事的男生，技能平平，却总有颗超神的心。闲时搞搞设计，聊聊摄影，读读书，编编码。过一个平凡无趣的人生实在太容易了，你可以不读书，不冒险，不运动，不写作，不外出，不折腾……但是，人生最后悔的事情就是：我本可以。</p>
                         </div>
                     </div>
-                    <div id="tab-6" class="tab-content">
-                        <h3>CSS</h3>
-                        <p>CSS is a language that describes the style of an HTML document.</p>
-                    </div>
-                    <div id="tab-7" class="tab-content">
-                        <h3>JavaScript</h3>
-                        <p>JavaScript Can Change HTML Content</p>
-                    </div>
-                    <div id="tab-8" class="tab-content">
-                        <h3>jQuery</h3>
-                        <p>jQuery is a lightweight, "write less, do more", JavaScript library.</p>
-                    </div>
                 </div>
-            </div>
-
+            </section>
+            <section id="portfolio" class="section">
+                <h2 class="section-title">Portfolio</h2>
+                <hr class="section-line">
+                <div class="portfolio">
+                    <ul class="demo-list">
+                        <li class="demo-item">
+                            <a href="./detail.html">
+                                <!-- <p class="demo-text">CSS常见布局</p> -->
+                                <img class="demo-img" src="../image/me.jpg" alt="">
+                            </a>
+                        </li>
+                        <li class="demo-item">
+                            <a href="./detail.html">
+                                <!-- <p class="demo-text">CSS常见布局</p> -->
+                                <img class="demo-img" src="../image/me.jpg" alt="">
+                            </a>
+                        </li>
+                        <li class="demo-item">
+                            <a href="./detail.html">
+                                <!-- <p class="demo-text">CSS常见布局</p> -->
+                                <img class="demo-img" src="../image/me.jpg" alt="">
+                            </a>
+                        </li>
+                        <li class="demo-item">
+                            <a href="./detail.html">
+                                <!-- <p class="demo-text">CSS常见布局</p> -->
+                                <img class="demo-img" src="../image/me.jpg" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section id="contact" class="contact section">
+                <h2 class="section-title">Contact Me</h2>
+                <hr class="section-line">
+                <form class="form">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Name</label>
+                        <input type="text" id="name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="text" id="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="Message">Message</label>
+                        <textarea rows=5 id="Message" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send</button>
+                </form>
+            </section>
         </div>
-    </div>
+        <footer class="container footer">
+            <div class=footer-below>
+                <p> Jecyu Lin© 2017. All Rights Reversed </p>
+            </div>
+        </footer>       
     </div>
     <!-- common js -->
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js?rev=@@hash"></script>
