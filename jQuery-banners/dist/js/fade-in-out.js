@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-11-08 11:25:24 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-08 6:55:02 pm 
+ * @Last Modified time: 2017-11-08 7:04:01 pm 
  */
 
 // banner逻辑

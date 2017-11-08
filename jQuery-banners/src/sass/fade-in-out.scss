@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-11-08 11:20:58 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-08 4:49:25 pm 
+ * @Last Modified time: 2017-11-08 9:26:28 pm 
  */
 
 
@@ -47,10 +47,9 @@ $itemBg5: rgba(0, 0, 0, .5);
         width: 100%;
         height: 100%;
         opacity: 1;
-        @include prefix(( transition: opacity .3s), webkit moz o); // Once loaded, images will appear with a nice fade-in effect
-        // &[data-src] {
-        //     opacity: 0;
-        // }
+
+        @media screen and (max-width: 400px) {
+        }
     }
 
     &:hover img {
