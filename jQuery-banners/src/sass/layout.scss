@@ -1,0 +1,122 @@
+/**
+ * @Author: Jecyu
+ * @Date: 2017-11-07 6:33:30 pm 
+ * @Modified By: JeCyu 
+ * @Last Modified time: 2017-11-07 6:33:37 pm 
+ */
+
+$basecolor: #722872;
+
+html,
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font: 14px/1.5 tahoma arial Microsoft Yahei sans-serif;
+    background: rgb(235, 235, 235);
+}
+
+body,
+li,
+ul,
+ol,
+div,
+p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ol,
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+}
+
+
+
+/* common style */
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.w {
+    width: 1080px;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+
+    .header {
+        margin-top: 50px;
+        text-align: center;
+        
+        .header-title {
+            font-size: 20px;
+        }
+
+        .header-info {
+            padding-bottom: 10px;
+            font-size: 16px;
+        }
+    }
+}
+
+
+
+.btn-groups {
+     .btn-item {
+        display: inline-block;
+        margin-left: 5px;
+
+        &.active a {
+            color: #fff;
+            background: $basecolor;
+        }
+     }
+}
+
+
+.btn {
+    display: inline-block;
+    height: 20px;
+    padding: 6px 12px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    line-height: 20px;
+    vertical-align: middle;
+    text-align: center;
+    color: $basecolor;
+    background: #fff;
+    cursor: pointer;
+    outline: none;
+
+    &:hover,
+    &:focus {
+        color: darkcyan;
+        border: 1px solid lightblue;
+    }
+
+}
+
+// loading
+.loading {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: url(../image/loading.gif);
+    background-size: contain;
+}
+
