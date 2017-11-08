@@ -1,0 +1,113 @@
+/**
+ * @Author: Jecyu
+ * @Date: 2017-11-08 11:20:58 am 
+ * @Modified By: JeCyu 
+ * @Last Modified time: 2017-11-08 4:49:25 pm 
+ */
+
+
+$basecolor: #722872;
+$bg: rgb(235, 235, 235);
+$itemBg1: #fff;
+$itemBg2: #8bbeb2;
+$itemBg3: #e6f9af;
+$itemBg4: #384E77;
+$itemBg5: rgba(0, 0, 0, .5);
+@mixin setColorAndHover($baseColor) {
+    color: $baseColor;
+    &:hover {
+        background: lighten($baseColor, 8%);
+        opacity: 1;
+        -webkit-filter: brightness(90%);
+    }
+}
+
+@import "./_browser-profix.scss";
+.page-wrap {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.banner {
+    position: relative;
+    overflow: hidden;
+    width: 750px;
+    height: 520px;
+    box-sizing: content-box;
+    border: 10px solid darken($itemBg1, 1%);
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        @include prefix(( transition: opacity .3s), webkit moz o); // Once loaded, images will appear with a nice fade-in effect
+        // &[data-src] {
+        //     opacity: 0;
+        // }
+    }
+
+    &:hover img {
+        // filter: brightness(110%);
+    }
+    
+    // btn-group
+    .btn-group {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 4;
+        text-align: right;
+            
+        .btn-item {
+            display: inline-block;
+            height: 10px;
+            width: 10px;
+            border-radius:  100%;
+            margin-right: 15px;
+
+            font-size: 16px;
+            color: #999;
+            background: #555;
+            cursor: pointer;
+        }
+        
+    }
+    
+    @media screen and (max-width: 400px) {
+        width: 100%;
+    }
+
+    // text-background
+    .img-desc-bg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 3;
+
+        display: block;
+        width: 750px;
+        height: 25px;
+        
+        background: darken($itemBg5,5%);
+        opacity: .3;
+        filter: alpha(opacity=30);
+        cursor: pointer;
+
+    }
+
+    // img description
+    .img-desc {
+        position: absolute;
+        bottom: 2px;
+        left: 10px;
+        z-index: 4;
+        color: $itemBg1;    
+    }
+}

@@ -15,6 +15,8 @@ var page = {
     },
     bindEvent: function() {
         var _this   = this;
+
+        // 初始化
         // 获取焦点图的宽度
         _this.bannerW = $('.banner').width();
         // 获取焦点图的个数
@@ -36,6 +38,25 @@ var page = {
         $('.banner ul').css("width", _this.bannerW * (len + 1));
 
     
+        // 鼠标滑上焦点图时停止自动播放，滑出时开始自动播放(须放在点击事件前，否则要触发点击事件才执行)
+        $('.banner').hover(function () {
+            clearInterval(picTimer);
+        }, function () {
+            picTimer = setInterval(function () {
+                // 如果播放完最后一张，则将索引归零
+                if (index === len) {
+                    index = 0;
+                    _this.showFirstPic(len, index);
+                }
+                // 普通切换
+                else {
+                    _this.showPics(index);
+                }
+
+                index++;
+
+            }, 2000);
+        })
 
         // 为小按钮添加鼠标滑入事件，以显示相应的内容
         $('.banner div.btn-group span').css("opacity", 0.4).mouseenter(function() {
@@ -67,25 +88,7 @@ var page = {
             index++;
         })
 
-        // 鼠标滑上焦点图时停止自动播放，滑出时开始自动播放
-        $('.banner').hover(function() {
-            clearInterval(picTimer);
-        }, function() {
-            picTimer = setInterval(function() {
-                // 如果播放完最后一张，则将索引归零
-                if(index === len) {
-                    index = 0;
-                    _this.showFirstPic(len, index);
-                }
-                // 普通切换
-                else {
-                    _this.showPics(index);
-                }
-
-                index++;
-
-            }, 2000);
-        })
+   
     },
     // 显示图片,根据接受到的index值显示对应的内容
     showPics: function(index) {
