@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-11-07 4:48:51 pm 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-07 4:49:14 pm 
+ * @Last Modified time: 2017-11-09 12:56:42 pm 
  */
 /**
  * @Author: Jecyu
@@ -51,9 +51,9 @@ function getFolders(dir) {
 gulp.task('sass', function () {
     return sass('src/sass/**/*.scss', { style: 'expanded' })  // 传入 sass 目录及子目录下的所有 .scss 文件生成文件流通过管道并设置输出格式
         .pipe(cached('sass'))  // 缓存传入文件，只让已修改的文件通过管道（第一次执行是全部通过，因为还没有记录缓存）
-        // .pipe(autoprefixer({
-        //     browsers: ['last 2 versions']
-        // }))
+        .pipe(autoprefixer({
+            browsers: ['last 6 versions']
+        }))
        
         .pipe(gulp.dest('dist/css')) // 输出到 dist/css 目录下（不影响此时管道里的文件流）
         .pipe(rename({ suffix: '.min' })) // 对管道里的文件流添加 .min 的重命名
@@ -67,10 +67,10 @@ gulp.task('css', function () {
         .pipe(cached('css'))
         .pipe(gulp.dest('dist/css')) // 把管道里的所有文件输出到 dist/css 目录
         .pipe(filter(['**/*', '!**/*.min.css'])) // 筛选出管道中的非 *.min.css 文件
-        // .pipe(autoprefixer({
-        //     browsers: ['last 2 versions'],
-        //     cascade: false
-        // }))
+        .pipe(autoprefixer({
+            browsers: ['last 6 versions'],
+            cascade: false
+        }))
         .pipe(gulp.dest('dist/css')) // 把处理过的 css 输出到 dist/css 目录
         .pipe(rename({ suffix: '.min' }))
         .pipe(cssnano())
