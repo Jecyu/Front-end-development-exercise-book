@@ -1,0 +1,135 @@
+/**
+ * @Author: Jecyu
+ * @Date: 2017-11-03 10:16:47 am 
+ * @Modified By: JeCyu 
+ * @Last Modified time: 2017-11-09 1:55:30 am 
+ */
+
+$basecolor: #722872;
+$bg: rgb(235, 235, 235);
+$itemBg1: #fff;
+$itemBg2: #8bbeb2;
+$itemBg3: #e6f9af;
+$itemBg4: #384E77;
+$itemBg5: rgba(0, 0, 0, .5);
+@mixin setColorAndHover($baseColor) {
+    color: $baseColor;
+    &:hover {
+        background: lighten($baseColor, 8%);
+        opacity: 1;
+        -webkit-filter: brightness(90%);
+    }
+}
+
+@import "./_browser-profix.scss";
+.page-wrap {
+    width: 640px;
+    margin: 40px auto;
+}
+
+.banner {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    width: 300px;
+    height: 200px;
+    box-sizing: content-box;
+    border: 10px solid darken($itemBg1, 1%);
+
+    &-list {
+        position: relative; 
+    }
+    &-item {
+        /* To center the carousel vertically in the viewport */
+        // display: flex;
+        // flex-direction: row;
+        // justify-content: center;
+        // align-items: center;
+        position: relative;
+        float: left;
+        width: 300px;
+        height: 200px; // margin: 0 10px 20px 10px;
+        background: #fff; // background: url(../image/1.jpg) no-repeat;
+        // background-size: cover;
+        cursor: pointer;
+        @media screen and (max-width: 400px) {
+            // width: 100%;
+        }
+    } // btn
+    .btn-group {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 30px;
+        width: 100%;
+        padding: 5px 10px;
+        text-align: right;
+        background: $itemBg5;
+        span {
+            display: inline-block;
+            width: 25px;
+            height: 10px;
+            margin-left: 5px;
+            border: 1px solid $itemBg3;
+            cursor: pointer;
+            background: $bg;
+            opacity: .5;
+            filter: alpha(opacity=50);
+        }
+    }
+    @media screen and (max-width: 400px) {
+        width: 100%;
+    }
+    &-arrow {
+        position: absolute;
+        top: 50%;
+        height: 20px;
+        width: 16px;
+        background: #ccc url(../image/arrow.png) no-repeat;
+        opacity: .5;
+        cursor: pointer;
+    }
+    .prev {
+        left: 0;
+        background-position: left center;
+    }
+    .next {
+        right: 0;
+        background-position: right center;
+    } // 左右点击区域
+    span {
+        &.hidden {
+            position: absolute;
+            display: block;
+            height: 50%; // 减去底部导航高度
+            width: 50%;
+            background: $itemBg3;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            cursor: pointer;
+        }
+        &.left {
+            top: 25%;
+            left: 0;
+        }
+        &.right {
+            top: 25%;
+            right: 0;
+        }
+    }
+}
+
+.banner-item {
+    img {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        @include prefix(( transition: opacity .3s), webkit moz o); // Once loaded, images will appear with a nice fade-in effect
+        // &[data-src] {
+        //     opacity: 0;
+        // }
+    }
+    &:hover img {
+        // filter: brightness(110%);
+    }
+}
