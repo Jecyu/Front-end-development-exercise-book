@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-11-08 11:20:58 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-08 9:26:28 pm 
+ * @Last Modified time: 2017-11-09 9:51:41 am 
  */
 
 
@@ -38,6 +38,10 @@ $itemBg5: rgba(0, 0, 0, .5);
     box-sizing: content-box;
     border: 10px solid darken($itemBg1, 1%);
 
+    @media screen and (max-width: 400px) {
+        height: 300px;
+    }
+
     img {
         position: absolute;
         top: 0;
@@ -48,8 +52,6 @@ $itemBg5: rgba(0, 0, 0, .5);
         height: 100%;
         opacity: 1;
 
-        @media screen and (max-width: 400px) {
-        }
     }
 
     &:hover img {

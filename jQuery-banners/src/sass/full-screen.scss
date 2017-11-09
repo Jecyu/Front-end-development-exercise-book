@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-11-03 10:16:47 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-09 12:24:55 am 
+ * @Last Modified time: 2017-11-09 10:15:36 am 
  */
 
 $basecolor: #722872;
@@ -26,6 +26,7 @@ $itemBg5: rgba(0, 0, 0, .5);
 body {
     overflow-x: hidden;
     overflow-y: scroll;
+    background: #722872;
 }
 .page-wrap {
     margin-top: 40px;
@@ -65,9 +66,7 @@ body {
         color: $bg;
 
         cursor: pointer;
-        @media screen and (max-width: 400px) {
-            // width: 100%;
-        }
+       
 
         &:nth-child(1) {
             background-image: url(../image/3-1.jpg);
@@ -143,6 +142,10 @@ body {
             opacity: 0;
             filter: alpha(opacity=0);
             cursor: pointer;
+
+             @media screen and (max-width: 400px) {
+                 width: 50%;
+             }
         }
         &.left {
             top: 20%;
@@ -168,4 +171,11 @@ body {
     &:hover img {
         // filter: brightness(110%);
     }
+}
+
+ // resize the img of background
+.full-screen {
+    background-size: cover;
+    background-position: center;
+    background-repeat: none;
 }

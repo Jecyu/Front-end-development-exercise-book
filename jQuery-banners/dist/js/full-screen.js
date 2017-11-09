@@ -1,4 +1,6 @@
 
+
+
 // banner逻辑
 var page = {
 
@@ -120,7 +122,14 @@ var page = {
     showFirstPic: function (len, index) {
         var _this = this;
         // 实现从最右边到最左边图时依然是往左滑动移动效果
-        $('.banner ul').append($('.banner ul li:first').clone());
+        $('.banner ul').append($('.banner ul li:first').clone()
+            .css({
+                "background": "url(../image/3-1.jpg)",
+                "background-size": "cover",
+                "background-repeat": "none",
+                "background-position": "center"
+            })
+        );
         // console.log($('.banner ul li:first').clone());
         // 获取到最后一个li元素的右边
         var nowLeft = -len * _this.bannerW;

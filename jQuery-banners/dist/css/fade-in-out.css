@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-11-08 11:20:58 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-08 9:26:28 pm 
+ * @Last Modified time: 2017-11-09 9:51:41 am 
  */
 .page-wrap {
   margin-top: 40px;
@@ -18,6 +18,11 @@
   height: 520px;
   box-sizing: content-box;
   border: 10px solid #fcfcfc;
+}
+@media screen and (max-width: 400px) {
+  .banner {
+    height: 300px;
+  }
 }
 .banner img {
   position: absolute;

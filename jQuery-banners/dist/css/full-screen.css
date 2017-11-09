@@ -2,11 +2,12 @@
  * @Author: Jecyu
  * @Date: 2017-11-03 10:16:47 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-09 12:24:55 am 
+ * @Last Modified time: 2017-11-09 10:15:36 am 
  */
 body {
   overflow-x: hidden;
   overflow-y: scroll;
+  background: #722872;
 }
 
 .page-wrap {
@@ -107,6 +108,11 @@ body {
   filter: alpha(opacity=0);
   cursor: pointer;
 }
+@media screen and (max-width: 400px) {
+  .banner span.hidden {
+    width: 50%;
+  }
+}
 .banner span.left {
   top: 20%;
   left: 0;
@@ -124,4 +130,10 @@ body {
   -moz-transition: opacity 0.3s;
   -o-transition: opacity 0.3s;
   transition: opacity 0.3s;
+}
+
+.full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: none;
 }

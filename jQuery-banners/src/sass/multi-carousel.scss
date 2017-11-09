@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-11-03 10:16:47 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-09 1:55:30 am 
+ * @Last Modified time: 2017-11-09 9:49:48 am 
  */
 
 $basecolor: #722872;
@@ -23,13 +23,20 @@ $itemBg5: rgba(0, 0, 0, .5);
 
 @import "./_browser-profix.scss";
 .page-wrap {
-    width: 640px;
+    // width: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 40px auto;
+    
+    @media screen and (min-width: 400px) {
+        flex-direction: row;
+        justify-content: center;
+    }
 }
 
 .banner {
     position: relative;
-    float: left;
     overflow: hidden;
     width: 300px;
     height: 200px;
@@ -52,9 +59,7 @@ $itemBg5: rgba(0, 0, 0, .5);
         background: #fff; // background: url(../image/1.jpg) no-repeat;
         // background-size: cover;
         cursor: pointer;
-        @media screen and (max-width: 400px) {
-            // width: 100%;
-        }
+      
     } // btn
     .btn-group {
         position: absolute;
@@ -75,10 +80,11 @@ $itemBg5: rgba(0, 0, 0, .5);
             background: $bg;
             opacity: .5;
             filter: alpha(opacity=50);
+
         }
     }
     @media screen and (max-width: 400px) {
-        width: 100%;
+        // width: 100%;
     }
     &-arrow {
         position: absolute;
@@ -101,19 +107,24 @@ $itemBg5: rgba(0, 0, 0, .5);
         &.hidden {
             position: absolute;
             display: block;
-            height: 50%; // 减去底部导航高度
+            height: 170px; // 减去底部导航高度
             width: 50%;
             background: $itemBg3;
             opacity: 0;
             filter: alpha(opacity=0);
-            cursor: pointer;
+            cursor: pointer;    
+            
+            @media screen and (max-width: 400px) {
+                 height: 80%; // 减去底部导航高度
+                 width: 50%;
+            }
         }
         &.left {
-            top: 25%;
+            top: 0;
             left: 0;
         }
         &.right {
-            top: 25%;
+            top: 0;
             right: 0;
         }
     }

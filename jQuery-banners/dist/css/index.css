@@ -2,7 +2,7 @@
  * @Author: Jecyu
  * @Date: 2017-11-03 10:16:47 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-08 12:00:15 pm 
+ * @Last Modified time: 2017-11-09 9:21:38 am 
  */
 .page-wrap {
   margin-top: 40px;
@@ -83,6 +83,11 @@
   opacity: 0;
   filter: alpha(opacity=0);
   cursor: pointer;
+}
+@media screen and (max-width: 400px) {
+  .banner span.hidden {
+    width: 200px;
+  }
 }
 .banner span.left {
   top: 0;
