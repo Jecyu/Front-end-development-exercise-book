@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+    <div id="app">
+        <h1 class="title">Vue.js实现客户信息管理</h1>
+        <table class="show">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>电话</th>
+                    <th>删除</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(person, index) in people">
+                    <td>{{ person.name }}</td>
+                    <td>{{ person.age }}</td>
+                    <td>{{ person.sex }}</td>
+                    <td>{{ person.phone }}</td>
+                    <td :class="'text-center'">
+                        <button @click="deletePerson(index)">删除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <fieldset class="add">
+            <my-title></my-title>
+            <div class="form-group">
+                <label>姓名:</label>
+                <input type="text" v-model="newPerson.name" required/>
+            </div>
+            <div class="form-group">
+                <label>年龄:</label>
+                <input type="text" v-model="newPerson.age" />
+            </div>
+            <div class="form-group">
+                <label>联系电话:</label>
+                <input type="text" v-model="newPerson.phone" />
+            </div>
+          
+            <div class="form-group">
+                <label>性别:</label>
+                <select v-model="newPerson.sex">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label></label>
+                <button @click="createPerson" class="add-btn">添加</button>
+            </div>
+        </fieldset>
+        <template id="myComponent">
+            <h2 class="subtitle">{{title}}</h2>       
+        </template>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        components: {
+            'my-title': {
+                template: '#myComponent',
+                data: function() {
+                    return {title:'创建新客户'}
+                }
+            }
+        },
+        data: {
+            newPerson: {
+                name: '',
+                age: '',
+                phone: '',
+                sex: '男'
+            },
+            people: [{
+                name: '章子怡',
+                age: 30,
+                sex: '女',
+                phone: '13422222222'
+            }, {
+                name: '刘嘉玲',
+                age: 26,
+                sex: '女',
+                phone: '13422222222'
+            }, {
+                name: '刘德华',
+                age: 22,
+                sex: '男',
+                phone: '13422222222'
+            }, {
+                name: '张学友',
+                age: 36,
+                sex: '男',
+                phone: '13422222222'
+            }]
+        },
+        methods: {
+            createPerson: function () {
+                if (!this.newPerson.name) {
+                    alert('姓名不能为空');
+                    return;
+                }
+
+                if (!this.newPerson.age) {
+                        alert('年龄不能为空');
+                        return;
+                }
+
+                if (!this.newPerson.phone) {
+                        alert('电话不能为空');
+                        return;
+                }
+
+                this.people.push(this.newPerson);
+                // 添加完newPerson对象后，重置newPerson对象
+                this.newPerson = { name: '', age: 0, sex: 'Male', phone: '' }
+            },
+            deletePerson: function (index) {
+                // 删一个数组元素
+                if (window.confirm('确认要删除？')) {
+                    this.people.splice(index, 1);
+                }
+            }
+        }
+    })
+</script>
+
+</html>

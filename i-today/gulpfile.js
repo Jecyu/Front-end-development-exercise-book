@@ -1,10 +1,9 @@
 /**
  * @Author: Jecyu
- * @Date: 2017-11-07 4:48:51 pm 
+ * @Date: 2017-11-11 1:15:43 am 
  * @Modified By: JeCyu 
- * @Last Modified time: 2017-11-09 7:16:38 pm 
+ * @Last Modified time: 2017-11-11 9:06:59 am 
  */
-/**
 
 /*!
  * gulp
@@ -107,7 +106,7 @@ gulp.task('image', function () {
 
 // html 编译 html 文件并复制字体
 gulp.task('html', function () {
-    return gulp.src('src/*/*.html')
+    return gulp.src('src/*.html')
         .pipe(fileinclude()) // include html
         .pipe(rev()) // 生成并插入 MD5
         .pipe(gulp.dest('dist'))
